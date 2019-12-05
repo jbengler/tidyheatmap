@@ -10,8 +10,8 @@
 The goal of `tidyheatmap` is to provide a tidyverse-style interface to
 the powerful heatmap package
 [pheatmap](https://github.com/raivokolde/pheatmap) by
-[@raivokolde](https://github.com/raivokolde). This enables to
-conveniently generate complex heatmaps from tidy data.
+[@raivokolde](https://github.com/raivokolde). This enables the
+convenient generation of complex heatmaps from tidy data.
 
 ## Installation
 
