@@ -18,3 +18,5 @@ Imports:
     pheatmap
 Suggests: 
     testthat (>= 2.1.0)
+URL: https://github.com/jbengler/tidyheatmap
+BugReports: https://github.com/jbengler/tidyheatmap/issues
