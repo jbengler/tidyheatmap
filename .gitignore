@@ -2,3 +2,4 @@
 .Rhistory
 .RData
 usethis.R
+inst/doc

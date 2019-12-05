@@ -1,23 +1,30 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # tidyheatmap
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
-The goal of `tidyheatmap` is to provide a tidyverse-style interface to
-the powerful heatmap package
-[pheatmap](https://github.com/raivokolde/pheatmap) by
-\[@raivokolde\](<https://github.com/raivokolde>). This enables to
-conveniently generate complex heatmaps from tidy data.
+The goal of `tidyheatmap` is to provide a tidyverse-style interface to the powerful heatmap package [pheatmap](https://github.com/raivokolde/pheatmap) by [@raivokolde](https://github.com/raivokolde). This enables to conveniently generate complex heatmaps from tidy data.
 
 ## Installation
 
 You can install the released version of `tidyheatmap` from GitHub with:
 
-``` r
+```{r eval=FALSE}
 # install.packages("devtools")
 
 devtools::install_github("jbengler/tidyheatmap")
@@ -25,10 +32,9 @@ devtools::install_github("jbengler/tidyheatmap")
 
 ## Example
 
-Given a tidy data frame of gene expression data like `data_exprs`, you
-can easily generate a basic heatmap.
+Given a tidy data frame of gene expression data like `data_exprs`, you can easily generate a basic heatmap. 
 
-``` r
+```{r eval=FALSE}
 library(tidyheatmap)
 
 data_exprs
@@ -49,4 +55,6 @@ tidy_heatmap(data_exprs,
 
 ## Documentation
 
-<https://jbengler.github.io/tidyheatmap/>
+https://jbengler.github.io/tidyheatmap/
+
+

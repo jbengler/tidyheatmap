@@ -17,6 +17,9 @@ Imports:
     dplyr,
     pheatmap
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat (>= 2.1.0),
+    knitr,
+    rmarkdown
 URL: https://github.com/jbengler/tidyheatmap
 BugReports: https://github.com/jbengler/tidyheatmap/issues
+VignetteBuilder: knitr
