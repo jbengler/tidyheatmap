@@ -15,7 +15,7 @@ convenient generation of complex heatmaps from tidy data.
 
 ## Installation
 
-You can install the released version of `tidyheatmap` from GitHub with:
+You can install `tidyheatmap` from GitHub with:
 
 ``` r
 # install.packages("devtools")

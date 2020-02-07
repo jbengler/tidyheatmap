@@ -6,7 +6,7 @@ Authors@R:
            family = "Engler",
            role = c("aut", "cre"),
            email = "broder.engler@gmail.com",
-           comment = c(ORCID = "0000-0002-3169-2076D"))
+           comment = c(ORCID = "0000-0002-3169-2076"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
