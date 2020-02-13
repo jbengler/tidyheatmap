@@ -15,7 +15,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Imports: 
     dplyr,
-    pheatmap
+    pheatmap,
+    rlang,
+    grDevices
 Suggests: 
     testthat (>= 2.1.0),
     knitr,
