@@ -124,8 +124,8 @@ data as input.</p>
   <span class='kw'>ann_colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"none"</span>, <span class='kw'>fontsize</span> <span class='kw'>=</span> <span class='fl'>7</span>,
   <span class='kw'>cellwidth</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cellheight</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_scale_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>color_scale_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_scale_n</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/grDevices/colorRamp.html'>colorRampPalette</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>name</span> <span class='kw'>=</span>
-  <span class='st'>"RdYlBu"</span>)))(<span class='no'>color_scale_n</span>), <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> (<span class='kw pkg'>grDevices</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/grDevices/colorRamp.html'>colorRampPalette</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span>
+  <span class='fl'>7</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"RdYlBu"</span>))))(<span class='no'>color_scale_n</span>), <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>cluster_rows</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cluster_cols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>border_color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -148,13 +148,24 @@ data as input.</p>
       <td><p>Column of the dataframe containing the values to plot.</p></td>
     </tr>
     <tr>
-      <th>ann_row, ann_col</th>
-      <td><p>Column(s) of the dataframe to use for row and column annotation.
-Multiple columns can be provided as vector, e.g. <code><a href='https://rdrr.io/r/base/c.html'>c(column1, column2, column3)</a></code>.</p></td>
+      <th>filename</th>
+      <td><p>todo</p></td>
     </tr>
     <tr>
-      <th>gaps_row, gaps_col</th>
-      <td><p>Column of the dataframe to use for row and column gaps.</p></td>
+      <th>ann_row</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>ann_col</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>gaps_row</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>gaps_col</th>
+      <td><p>todo</p></td>
     </tr>
     <tr>
       <th>ann_colors</th>
@@ -176,12 +187,20 @@ Default is "row".</p></td>
       <td><p>Base fontsize for the plot.</p></td>
     </tr>
     <tr>
-      <th>cellwidth, cellheight</th>
-      <td><p>Cell width and hieght in points. If left <code>NA</code>, cells will scale to fill the available space.</p></td>
+      <th>cellwidth</th>
+      <td><p>todo</p></td>
     </tr>
     <tr>
-      <th>color_scale_min, color_scale_max</th>
-      <td><p>Minimal and maximal value on color scale.</p></td>
+      <th>cellheight</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>color_scale_min</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>color_scale_max</th>
+      <td><p>todo</p></td>
     </tr>
     <tr>
       <th>color_scale_n</th>
@@ -194,6 +213,18 @@ Default is "row".</p></td>
     <tr>
       <th>return_data</th>
       <td><p>If <code>TRUE</code> processed data is returned instead of plot.</p></td>
+    </tr>
+    <tr>
+      <th>cluster_rows</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>cluster_cols</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>border_color</th>
+      <td><p>todo</p></td>
     </tr>
     <tr>
       <th>...</th>

@@ -16,7 +16,14 @@ comment = "#>"
 
 `tidyheatmap` provides a tidyverse-style interface to the powerful heatmap package [pheatmap](https://github.com/raivokolde/pheatmap) by [\@raivokolde](https://github.com/raivokolde). Although heatmaps can be generated via `ggplot2::geom_tile()`, it is hard to reach the versatility and beauty of a genuine heatmap function like `pheatmap::pheatmap()`.
 
-```{r message=FALSE, warning=FALSE}
+```{r include=FALSE}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(tidyheatmap)
+```
+
+```{r eval=FALSE}
 library(tidyverse)
 library(tidyheatmap)
 ```

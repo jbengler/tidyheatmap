@@ -9,8 +9,8 @@ tidy_heatmap(df, rows, columns, values, filename = NA, ann_row = NULL,
   ann_colors = NA, breaks = NA, scale = "none", fontsize = 7,
   cellwidth = NA, cellheight = NA, color_scale_min = NA,
   color_scale_max = NA, color_scale_n = 100,
-  color = colorRampPalette(rev(RColorBrewer::brewer.pal(n = 7, name =
-  "RdYlBu")))(color_scale_n), return_data = FALSE,
+  color = (grDevices::colorRampPalette(rev(RColorBrewer::brewer.pal(n =
+  7, name = "RdYlBu"))))(color_scale_n), return_data = FALSE,
   cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, ...)
 }
 \arguments{
@@ -22,10 +22,15 @@ tidy_heatmap(df, rows, columns, values, filename = NA, ann_row = NULL,
 
 \item{values}{Column of the dataframe containing the values to plot.}
 
-\item{ann_row, ann_col}{Column(s) of the dataframe to use for row and column annotation.
-Multiple columns can be provided as vector, e.g. \code{c(column1, column2, column3)}.}
+\item{filename}{todo}
 
-\item{gaps_row, gaps_col}{Column of the dataframe to use for row and column gaps.}
+\item{ann_row}{todo}
+
+\item{ann_col}{todo}
+
+\item{gaps_row}{todo}
+
+\item{gaps_col}{todo}
 
 \item{ann_colors}{List of colors used to color code row and column annotations.
 See \code{pheatmap::pheatmap()} for details.}
@@ -38,15 +43,25 @@ Default is "row".}
 
 \item{fontsize}{Base fontsize for the plot.}
 
-\item{cellwidth, cellheight}{Cell width and hieght in points. If left \code{NA}, cells will scale to fill the available space.}
+\item{cellwidth}{todo}
 
-\item{color_scale_min, color_scale_max}{Minimal and maximal value on color scale.}
+\item{cellheight}{todo}
+
+\item{color_scale_min}{todo}
+
+\item{color_scale_max}{todo}
 
 \item{color_scale_n}{Number of color on color scale.}
 
 \item{color}{Vector of colors used in heatmap.}
 
 \item{return_data}{If \code{TRUE} processed data is returned instead of plot.}
+
+\item{cluster_rows}{todo}
+
+\item{cluster_cols}{todo}
+
+\item{border_color}{todo}
 
 \item{...}{Other parameters passed to \code{pheatmap::pheatmap()}.}
 }
