@@ -37,7 +37,7 @@ devtools::install_github("jbengler/tidyheatmap")
 
 Given a tidy data frame of gene expression data like `data_exprs`, you can easily generate a basic heatmap. 
 
-```{r eval=FALSE}
+```{r}
 library(tidyheatmap)
 
 data_exprs
@@ -52,7 +52,14 @@ data_exprs
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
-             values = expression
+             values = expression,
+             ann_col = c(sample_type, condition, group),
+             scale = "row",
+             color_scale_n = 16,
+             color_scale_min = -2,
+             color_scale_max = 2,
+             gaps_row = direction,
+             gaps_col = group
 )
 ```
 
