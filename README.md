@@ -54,13 +54,6 @@ data_exprs
 #> # … with 790 more rows, and 7 more variables: count_type <chr>, group <chr>,
 #> #   replicate <chr>, expression <dbl>, sample <chr>, sample_type <chr>,
 #> #   condition <chr>
-#> # A tibble: 800 x 3
-#>    external_gene_name sample expression
-#>    <chr>              <chr>       <dbl>
-#>  1 Bsn                Hin_1        9.59
-#>  2 Bsn                Hin_2        9.48
-#>  3 Bsn                Hin_3        9.66
-# ...
 
 tidy_heatmap(data_exprs,
              rows = external_gene_name,

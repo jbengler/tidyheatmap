@@ -41,13 +41,6 @@ Given a tidy data frame of gene expression data like `data_exprs`, you can easil
 library(tidyheatmap)
 
 data_exprs
-#> # A tibble: 800 x 3
-#>    external_gene_name sample expression
-#>    <chr>              <chr>       <dbl>
-#>  1 Bsn                Hin_1        9.59
-#>  2 Bsn                Hin_2        9.48
-#>  3 Bsn                Hin_3        9.66
-# ...
 
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
