@@ -32,7 +32,7 @@ devtools::install_github("jbengler/tidyheatmap")
 ## Example
 
 Given a tidy data frame of gene expression data like `data_exprs`, you
-can easily generate a basic heatmap.
+can easily generate a customized heatmap.
 
 ``` r
 library(tidyheatmap)
