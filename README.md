@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.org/jbengler/tidyheatmap.svg?branch=master)](https://travis-ci.org/jbengler/tidyheatmap)
 <!-- badges: end -->
 
 The goal of `tidyheatmap` is to provide a tidyverse-style interface to

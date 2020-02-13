@@ -6,3 +6,4 @@
 ^pkgdown$
 ^usethis\.R$
 ^README\.Rmd$
+^\.travis\.yml$
