@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot pretty heatmaps from tidy data — tidy_heatmap • tidyheatmap</title>
+<title>Pretty heatmaps from tidy data — tidy_heatmap • tidyheatmap</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,11 @@
 
 
 
-<meta property="og:title" content="Plot pretty heatmaps from tidy data — tidy_heatmap" />
-<meta property="og:description" content="This function is a wrapper around pheatmap::pheatmap() that allows long tidy
-data as input." />
+<meta property="og:title" content="Pretty heatmaps from tidy data — tidy_heatmap" />
+<meta property="og:description" content="A tidyverse-style interface to the powerful heatmap package
+pheatmap
+by @raivokolde.
+This enables the convenient generation of complex heatmaps from tidy data." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,18 +111,20 @@ data as input." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot pretty heatmaps from tidy data</h1>
+    <h1>Pretty heatmaps from tidy data</h1>
     <small class="dont-index">Source: <a href='https://github.com/jbengler/tidyheatmap/blob/master/R/tidyheatmap.R'><code>R/tidyheatmap.R</code></a></small>
     <div class="hidden name"><code>tidy_heatmap.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function is a wrapper around <code><a href='https://rdrr.io/pkg/pheatmap/man/pheatmap.html'>pheatmap::pheatmap()</a></code> that allows long tidy
-data as input.</p>
+    <p>A tidyverse-style interface to the powerful heatmap package
+<a href='https://github.com/raivokolde/pheatmap'>pheatmap</a>
+by <a href='https://github.com/raivokolde'>@raivokolde</a>.
+This enables the convenient generation of complex heatmaps from tidy data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tidy_heatmap</span>(<span class='no'>df</span>, <span class='no'>rows</span>, <span class='no'>columns</span>, <span class='no'>values</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>color_scale_n</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>color_scale_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_scale_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>color_legend_n</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>color_legend_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_legend_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>color_na</span> <span class='kw'>=</span> <span class='st'>"#DDDDDD"</span>, <span class='kw'>annotation_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>annotation_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>gaps_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gaps_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
   <span class='kw'>fontsize</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>cellwidth</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cellheight</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
@@ -150,52 +154,38 @@ data as input.</p>
       <td><p>Input dataframe in long format.</p></td>
     </tr>
     <tr>
-      <th>rows</th>
-      <td><p>Column of the dataframe to use for heatmap rows.</p></td>
-    </tr>
-    <tr>
-      <th>columns</th>
-      <td><p>Column of the dataframe to use for heatmap columns.</p></td>
+      <th>rows, columns</th>
+      <td><p>Column name in the dataframe to use for heatmap <code>rows</code> and <code>columns</code>.</p></td>
     </tr>
     <tr>
       <th>values</th>
-      <td><p>Column of the dataframe containing the values to plot.</p></td>
+      <td><p>Column name in the dataframe to use for color coded cell values.</p></td>
     </tr>
     <tr>
       <th>colors</th>
-      <td><p>Vector of colors used to encode values in heatmap.</p></td>
+      <td><p>Vector of colors used for the color legend.</p></td>
     </tr>
     <tr>
-      <th>color_scale_n</th>
-      <td><p>Number of colors in color scale.</p></td>
+      <th>color_legend_n</th>
+      <td><p>Number of colors in the color legend.</p></td>
     </tr>
     <tr>
-      <th>color_scale_min</th>
-      <td><p>todo</p></td>
-    </tr>
-    <tr>
-      <th>color_scale_max</th>
-      <td><p>todo</p></td>
+      <th>color_legend_min, color_legend_max</th>
+      <td><p>Min and max value of the color legend.
+Values smaller then the <code>min</code> will have the lowest color, values bigger than the <code>max</code> will get the highest color.</p></td>
     </tr>
     <tr>
       <th>color_na</th>
-      <td><p>todo</p></td>
+      <td><p>Color to use for <code>NAs</code> in <code>values</code>.</p></td>
     </tr>
     <tr>
-      <th>annotation_row</th>
-      <td><p>todo</p></td>
+      <th>annotation_row, annotation_col</th>
+      <td><p>Column name(s) in the dataframe to use for <code>row</code> and <code>column</code> annotation.
+To use multiple column names for annotation combine then by <code><a href='https://rdrr.io/r/base/c.html'>c(column1, column2)</a></code>.</p></td>
     </tr>
     <tr>
-      <th>annotation_col</th>
-      <td><p>todo</p></td>
-    </tr>
-    <tr>
-      <th>gaps_row</th>
-      <td><p>todo</p></td>
-    </tr>
-    <tr>
-      <th>gaps_col</th>
-      <td><p>todo</p></td>
+      <th>gaps_row, gaps_col</th>
+      <td><p>Column name in the dataframe to use for use for <code>row</code> and <code>column</code> gaps.</p></td>
     </tr>
     <tr>
       <th>filename</th>
@@ -382,12 +372,77 @@ notation (see more in <code><a href='https://rdrr.io/r/base/sprintf.html'>sprint
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Invisibly a <code>pheatmap</code> object that is a list with components</p><ul>
+<li><p><code>tree_row</code> the clustering of rows as <code>hclust</code> object</p></li>
+<li><p><code>tree_col</code> the clustering of columns as <code>hclust</code> object</p></li>
+<li><p><code>kmeans</code> the kmeans clustering of rows if parameter <code>kmeans_k</code> was specified</p></li>
+<li><p><code>gtable</code> a <code>gtable</code> object containing the heatmap, can be used for combining the heatmap with other plots</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    
+<ul>
+<li><p><code>tidy_heatmap()</code> requires tidy data in long format, see <a href='https://tidyr.tidyverse.org/index.html'>tidyverse</a>.</p></li>
+<li><p>For more documentation also look into the <a href='https://jbengler.github.io/tidyheatmap/articles/tidyheatmap.html'>Get started</a> guide.</p></li>
+</ul>
+
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Basic example</span>
+<span class='fu'>tidy_heatmap</span>(<span class='no'>data_exprs</span>,
+             <span class='kw'>rows</span> <span class='kw'>=</span> <span class='no'>external_gene_name</span>,
+             <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>sample</span>,
+             <span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>expression</span>,
+             <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>
+)</div><div class='img'><img src='tidy_heatmap-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Change number of colors in color lengend</span>
+<span class='fu'>tidy_heatmap</span>(<span class='no'>data_exprs</span>,
+             <span class='kw'>rows</span> <span class='kw'>=</span> <span class='no'>external_gene_name</span>,
+             <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>sample</span>,
+             <span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>expression</span>,
+             <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
+             <span class='kw'>color_legend_n</span> <span class='kw'>=</span> <span class='fl'>5</span>
+)</div><div class='img'><img src='tidy_heatmap-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Change color in color legend</span>
+<span class='fu'>tidy_heatmap</span>(<span class='no'>data_exprs</span>,
+             <span class='kw'>rows</span> <span class='kw'>=</span> <span class='no'>external_gene_name</span>,
+             <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>sample</span>,
+             <span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>expression</span>,
+             <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
+             <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"#145afc"</span>,<span class='st'>"#ffffff"</span>,<span class='st'>"#ee4445"</span>)
+)</div><div class='img'><img src='tidy_heatmap-3.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Add row and column annotation</span>
+<span class='fu'>tidy_heatmap</span>(<span class='no'>data_exprs</span>,
+             <span class='kw'>rows</span> <span class='kw'>=</span> <span class='no'>external_gene_name</span>,
+             <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>sample</span>,
+             <span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>expression</span>,
+             <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
+             <span class='kw'>annotation_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>sample_type</span>, <span class='no'>condition</span>, <span class='no'>group</span>),
+             <span class='kw'>annotation_row</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>is_immune_gene</span>, <span class='no'>direction</span>)
+)</div><div class='img'><img src='tidy_heatmap-4.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># Add gaps between rows and columns</span>
+<span class='fu'>tidy_heatmap</span>(<span class='no'>data_exprs</span>,
+             <span class='kw'>rows</span> <span class='kw'>=</span> <span class='no'>external_gene_name</span>,
+             <span class='kw'>columns</span> <span class='kw'>=</span> <span class='no'>sample</span>,
+             <span class='kw'>values</span> <span class='kw'>=</span> <span class='no'>expression</span>,
+             <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"row"</span>,
+             <span class='kw'>annotation_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>sample_type</span>, <span class='no'>condition</span>, <span class='no'>group</span>),
+             <span class='kw'>annotation_row</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='no'>is_immune_gene</span>, <span class='no'>direction</span>),
+             <span class='kw'>gaps_row</span> <span class='kw'>=</span> <span class='no'>direction</span>,
+             <span class='kw'>gaps_col</span> <span class='kw'>=</span> <span class='no'>group</span>
+)</div><div class='img'><img src='tidy_heatmap-5.png' alt='' width='700' height='433' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

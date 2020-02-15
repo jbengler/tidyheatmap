@@ -32,13 +32,9 @@ library(tidyheatmap)
 
 `tidy_heatmap()` requires tidy data in long format, see [tidyverse](https://tidyr.tidyverse.org/index.html).
 
-As an example we will use the gene expression data set `data_exprs`. In the tidyverse lingo the columns of a data frame are called *variables*. One of these variables named `expression` contains the numeric values to be color-coded in the heatmap. Furthermore we will use the variables `sample` for heatmap columns and `external_gene_name` for heatmap rows.
+As an example we will use the gene expression data set `data_exprs`. In the tidyverse lingo the columns of a data frame are called *variables*. The variable `expression` contains the numeric values to be color-coded in the heatmap. Furthermore we will use the variables `sample` for heatmap columns and `external_gene_name` for heatmap rows.
 
 ```{r}
-data_exprs
-
-data_exprs %>% filter(external_gene_name == "Bsn") %>% select(external_gene_name, sample, expression)
-
 glimpse(data_exprs)
 ```
 
@@ -55,9 +51,7 @@ tidy_heatmap(data_exprs,
 )
 ```
 
-## Features
-
-### Data scaling
+## Data scaling
 
 With the parameter `scale` you can activate data scaling for `"row"` or `"column"`. By default data scaling is turned off `scale = "none"`.
 
@@ -70,7 +64,7 @@ tidy_heatmap(data_exprs,
 )
 ```
 
-### Ordering
+## Ordering
 
 Rows and columns in the heatmap will appear in the same order as in the tidy data frame used as input. For example, to order rows and columns alphabetically, just use the `dplyr::arrange()`.
 
@@ -84,23 +78,9 @@ data_exprs %>%
   )
 ```
 
-### Color legend
+## Color legend
 
-You can customize the number of colors `color_scale_n` and also the minimum and maximum values of the color legend, `color_scale_min` and `color_scale_max`.
-
-```{r}
-tidy_heatmap(data_exprs,
-             rows = external_gene_name,
-             columns = sample,
-             values = expression,
-             scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2
-)
-```
-
-Of course, you can also replace the color legend altogether.
+You can customize the number of colors `color_legend_n` in the color legend. The default is *15*.
 
 ```{r}
 tidy_heatmap(data_exprs,
@@ -108,33 +88,54 @@ tidy_heatmap(data_exprs,
              columns = sample,
              values = expression,
              scale = "row",
-             colors = c("#161523","#1C1E4C","#2D3679","#3B4D98","#49569F","#69549D",
-                       "#855097","#9E4F96","#CA5296","#DC5F8E","#E17872","#E58D63",
-                       "#EDA962","#F5CA66","#F9E96C","#EEE969")
+             color_legend_n = 5
 )
 ```
 
-### Annotations
-
-Annotations can be added for both `rows` and `columns` via `ann_row` and `ann_col`, respectively. Just specify the corresponding variables in the tidy data frame. If you want more then one variable for annotation just combine them by `c(var1, var2, var3)`.
+You can also define the minimum and maximum values of the color legend.
+Values smaller then the `color_legend_min` will have the lowest color, values bigger than the `color_legend_max` will get the highest color.
 
 ```{r}
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
+             scale = "row",
+             color_legend_min = -1,
+             color_legend_max = 1
+)
+```
+
+Of course, you can also change the `colors` themselves. The number of `colors` you provide does not have to match `color_legend_n`. The color legend is automatically adjusted to have `color_legend_n` colors (the default is *15*).
+
+```{r}
+tidy_heatmap(data_exprs,
+             rows = external_gene_name,
+             columns = sample,
+             values = expression,
+             scale = "row",
+             colors = c("#145afc","#ffffff","#ee4445")
+)
+```
+
+## Annotations
+
+Annotations can be added for both `rows` and `columns` via `annotation_row` and `annotation_col`, respectively. Just specify the corresponding variables in the tidy data frame. If you want more then one variable for annotation just combine them by `c(var1, var2, var3)`.
+
+```{r}
+tidy_heatmap(data_exprs,
+             rows = external_gene_name,
+             columns = sample,
+             values = expression,
+             scale = "row",
              annotation_col = c(sample_type, condition, group),
-             annotation_row = c(is_immune_gene, direction),
-             scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2
+             annotation_row = c(is_immune_gene, direction)
 )
 ```
 
 ### Customize annotations colors
 
-You can provide a list of named vectors to take control over the annotations colors `ann_colors`.
+You can provide a list of named vectors to take control over the annotations colors `annotation_colors`.
 
 ```{r}
 ann_colors <- list(
@@ -149,61 +150,52 @@ tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
+             scale = "row",
              annotation_col = c(sample_type, condition, group),
              annotation_row = c(is_immune_gene, direction),
-             scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2,
              annotation_colors = ann_colors
 )
 ```
 
-### Gaps
+## Gaps
 
-Gaps can be added by specifying data frame variables that should be used to generate the gaps. Only one variable can be chosen for `gaps_row` and one for `gaps_col`.
+Gaps can be added by specifying data frame variables that should be used to generate the gaps. Only one variable can be chosen for each `gaps_row` and `gaps_col`.
 
 ```{r}
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
+             scale = "row",
              annotation_col = c(sample_type, condition, group),
              annotation_row = c(is_immune_gene, direction),
-             scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2,
              annotation_colors = ann_colors,
              gaps_row = direction,
              gaps_col = group
 )
 ```
 
-### Fix cell dimensions
+## Cell dimensions
 
-You can fix the cell dimensions via the `cellwidth` and `cellheight` parameters.
+You can provide absolute cell dimensions (in points) via the `cellwidth` and `cellheight` parameters.
 
 ```{r fig.asp=0.8}
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
+             scale = "row",
              annotation_col = c(sample_type, condition, group),
              annotation_row = c(is_immune_gene, direction),
-             scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2,
              annotation_colors = ann_colors,
              gaps_row = direction,
-             gaps_col = condition,
+             gaps_col = group,
              cellwidth = 7,
              cellheight = 7
 )
 ```
 
-### Write to file
+## Write to file
 
 You can use the parameter `filename` to write the heatmap to file.
 
@@ -218,36 +210,16 @@ tidy_heatmap(data_exprs,
 
 ## More features
 
-There are even more features like clustering and dendrograms implemented in `pheatmap::pheatmap()`. All parameters that are not directly evaluated by `tidy_heatmap()` will be automatically passed to `pheatmap::pheatmap()`.
+[pheatmap](https://github.com/raivokolde/pheatmap) provides even more features like clustering, dendrograms, text within cells, *et cetera*. Additional available parameters can be found in the documentation of `tidy_heatmap()`. 
 
 ```{r fig.asp=0.9}
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
-             annotation_col = c(sample_type, condition, group),
-             annotation_row = c(is_immune_gene, direction),
              scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2,
-             annotation_colors = ann_colors,
-             cellwidth = 7,
-             cellheight = 7,
              cluster_rows = TRUE,
-             cluster_cols = TRUE
+             cluster_cols = TRUE,
+             display_numbers = TRUE
 )
 ```
-
-## What's under the hood?
-
-`tidy_heatmap()` takes the tidy data frame and the additional arguments and does the data wrangling needed to satisfy `pheatmap::pheatmap()`. By setting `return_data = TRUE` you can get a glimpse at the result of the data wrangling.
-
-```{r}
-
-```
-
-## Credit
-
-All the credit for the heatmap functionality goes to [\@raivokolde](https://github.com/raivokolde), the creator of the brilliant [pheatmap](https://github.com/raivokolde/pheatmap) package. `tidyheatmap` just provides a convenient interface to use [pheatmap](https://github.com/raivokolde/pheatmap) in the `tidyverse` ecosystem.
-

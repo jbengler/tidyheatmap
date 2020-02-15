@@ -25,6 +25,7 @@ You can install `tidyheatmap` from GitHub with:
 
 ``` r
 # install.packages("devtools")
+
 devtools::install_github("jbengler/tidyheatmap")
 ```
 
@@ -35,16 +36,16 @@ can easily generate a customized heatmap.
 
 ``` r
 library(tidyheatmap)
-
+devtools::load_all()
+#> Loading tidyheatmap
+#> Warning: package 'testthat' was built under R version 3.5.2
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
-             annotation_col = c(sample_type, condition, group),
              scale = "row",
-             color_scale_n = 16,
-             color_scale_min = -2,
-             color_scale_max = 2,
+             annotation_col = c(sample_type, condition, group),
+             annotation_row = c(is_immune_gene, direction),
              gaps_row = direction,
              gaps_col = group
 )
