@@ -39,7 +39,7 @@ tidy_heatmap(df, rows, columns, values, colors = NA,
 \item{color_legend_n}{Number of colors in the color legend.}
 
 \item{color_legend_min, color_legend_max}{Min and max value of the color legend.
-Values smaller then the \code{min} will have the lowest color, values bigger than the \code{max} will get the highest color.}
+Values smaller then the \code{color_legend_min} will have the lowest color, values bigger than the \code{color_legend_max} will get the highest color.}
 
 \item{color_na}{Color to use for \code{NAs} in \code{values}.}
 

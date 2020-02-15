@@ -70,7 +70,7 @@ wrangle_data <- function(df, rows, columns, values, annotation_row = NULL, annot
 #' @param colors Vector of colors used for the color legend.
 #' @param color_legend_n Number of colors in the color legend.
 #' @param color_legend_min,color_legend_max Min and max value of the color legend.
-#' Values smaller then the `min` will have the lowest color, values bigger than the `max` will get the highest color.
+#' Values smaller then the `color_legend_min` will have the lowest color, values bigger than the `color_legend_max` will get the highest color.
 #' @param color_na Color to use for `NAs` in `values`.
 #'
 #' @param annotation_row,annotation_col Column name(s) in the dataframe to use for `row` and `column` annotation.
