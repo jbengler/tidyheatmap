@@ -119,14 +119,28 @@ data as input." />
 data as input.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tidy_heatmap</span>(<span class='no'>df</span>, <span class='no'>rows</span>, <span class='no'>columns</span>, <span class='no'>values</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>ann_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ann_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gaps_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gaps_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ann_colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"none"</span>, <span class='kw'>fontsize</span> <span class='kw'>=</span> <span class='fl'>7</span>,
-  <span class='kw'>cellwidth</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cellheight</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_scale_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>color_scale_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_scale_n</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>color</span> <span class='kw'>=</span> (<span class='kw pkg'>grDevices</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/r/grDevices/colorRamp.html'>colorRampPalette</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rev.html'>rev</a></span>(<span class='kw pkg'>RColorBrewer</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html'>brewer.pal</a></span>(<span class='kw'>n</span> <span class='kw'>=</span>
-  <span class='fl'>7</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"RdYlBu"</span>))))(<span class='no'>color_scale_n</span>), <span class='kw'>return_data</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>cluster_rows</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cluster_cols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>border_color</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>tidy_heatmap</span>(<span class='no'>df</span>, <span class='no'>rows</span>, <span class='no'>columns</span>, <span class='no'>values</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>color_scale_n</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>color_scale_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_scale_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>color_na</span> <span class='kw'>=</span> <span class='st'>"#DDDDDD"</span>, <span class='kw'>annotation_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>annotation_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gaps_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gaps_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
+  <span class='kw'>fontsize</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>cellwidth</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cellheight</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>cluster_rows</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cluster_cols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>border_color</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>kmeans_k</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>clustering_distance_rows</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
+  <span class='kw'>clustering_distance_cols</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
+  <span class='kw'>clustering_method</span> <span class='kw'>=</span> <span class='st'>"complete"</span>, <span class='kw'>clustering_callback</span> <span class='kw'>=</span> <span class='no'>identity2</span>,
+  <span class='kw'>cutree_rows</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cutree_cols</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>treeheight_row</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>cluster_rows</span>) <span class='kw'>==</span> <span class='st'>"hclust"</span>) <span class='kw'>||</span>
+  <span class='no'>cluster_rows</span>, <span class='fl'>50</span>, <span class='fl'>0</span>), <span class='kw'>treeheight_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>cluster_cols</span>) <span class='kw'>==</span>
+  <span class='st'>"hclust"</span>) <span class='kw'>||</span> <span class='no'>cluster_cols</span>, <span class='fl'>50</span>, <span class='fl'>0</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>legend_breaks</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>annotation_colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>annotation_legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>annotation_names_row</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>annotation_names_col</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop_levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>show_rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>fontsize_row</span> <span class='kw'>=</span> <span class='no'>fontsize</span>, <span class='kw'>fontsize_col</span> <span class='kw'>=</span> <span class='no'>fontsize</span>,
+  <span class='kw'>angle_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"270"</span>, <span class='st'>"0"</span>, <span class='st'>"45"</span>, <span class='st'>"90"</span>, <span class='st'>"315"</span>),
+  <span class='kw'>display_numbers</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>number_format</span> <span class='kw'>=</span> <span class='st'>"%.2f"</span>,
+  <span class='kw'>number_color</span> <span class='kw'>=</span> <span class='st'>"grey30"</span>, <span class='kw'>fontsize_number</span> <span class='kw'>=</span> <span class='fl'>0.8</span> * <span class='no'>fontsize</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,15 +162,31 @@ data as input.</p>
       <td><p>Column of the dataframe containing the values to plot.</p></td>
     </tr>
     <tr>
-      <th>filename</th>
+      <th>colors</th>
+      <td><p>Vector of colors used to encode values in heatmap.</p></td>
+    </tr>
+    <tr>
+      <th>color_scale_n</th>
+      <td><p>Number of colors in color scale.</p></td>
+    </tr>
+    <tr>
+      <th>color_scale_min</th>
       <td><p>todo</p></td>
     </tr>
     <tr>
-      <th>ann_row</th>
+      <th>color_scale_max</th>
       <td><p>todo</p></td>
     </tr>
     <tr>
-      <th>ann_col</th>
+      <th>color_na</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>annotation_row</th>
+      <td><p>todo</p></td>
+    </tr>
+    <tr>
+      <th>annotation_col</th>
       <td><p>todo</p></td>
     </tr>
     <tr>
@@ -168,67 +198,187 @@ data as input.</p>
       <td><p>todo</p></td>
     </tr>
     <tr>
-      <th>ann_colors</th>
-      <td><p>List of colors used to color code row and column annotations.
-See <code><a href='https://rdrr.io/pkg/pheatmap/man/pheatmap.html'>pheatmap::pheatmap()</a></code> for details.</p></td>
-    </tr>
-    <tr>
-      <th>breaks</th>
-      <td><p>Sequence used for mapping values to colors. Is one element longer than <code>color_scale_n</code>.
-See <code><a href='https://rdrr.io/pkg/pheatmap/man/pheatmap.html'>pheatmap::pheatmap()</a></code> for details.</p></td>
+      <th>filename</th>
+      <td><p>file path where to save the picture. Filetype is decided by 
+the extension in the path. Currently following formats are supported: png, pdf, tiff,
+ bmp, jpeg. Even if the plot does not fit into the plotting window, the file size is 
+calculated so that the plot would fit there, unless specified otherwise.</p></td>
     </tr>
     <tr>
       <th>scale</th>
-      <td><p>Character indicating if the values should be centered and scaled by "row", "column" or "none".
-Default is "row".</p></td>
+      <td><p>character indicating if the values should be centered and scaled in 
+either the row direction or the column direction, or none. Corresponding values are 
+<code>"row"</code>, <code>"column"</code> and <code>"none"</code></p></td>
     </tr>
     <tr>
       <th>fontsize</th>
-      <td><p>Base fontsize for the plot.</p></td>
+      <td><p>base fontsize for the plot</p></td>
     </tr>
     <tr>
       <th>cellwidth</th>
-      <td><p>todo</p></td>
+      <td><p>individual cell width in points. If left as NA, then the values 
+depend on the size of plotting window.</p></td>
     </tr>
     <tr>
       <th>cellheight</th>
-      <td><p>todo</p></td>
-    </tr>
-    <tr>
-      <th>color_scale_min</th>
-      <td><p>todo</p></td>
-    </tr>
-    <tr>
-      <th>color_scale_max</th>
-      <td><p>todo</p></td>
-    </tr>
-    <tr>
-      <th>color_scale_n</th>
-      <td><p>Number of color on color scale.</p></td>
-    </tr>
-    <tr>
-      <th>color</th>
-      <td><p>Vector of colors used in heatmap.</p></td>
-    </tr>
-    <tr>
-      <th>return_data</th>
-      <td><p>If <code>TRUE</code> processed data is returned instead of plot.</p></td>
+      <td><p>individual cell height in points. If left as NA, 
+then the values depend on the size of plotting window.</p></td>
     </tr>
     <tr>
       <th>cluster_rows</th>
-      <td><p>todo</p></td>
+      <td><p>boolean values determining if rows should be clustered or <code>hclust</code> object,</p></td>
     </tr>
     <tr>
       <th>cluster_cols</th>
-      <td><p>todo</p></td>
+      <td><p>boolean values determining if columns should be clustered or <code>hclust</code> object.</p></td>
     </tr>
     <tr>
       <th>border_color</th>
-      <td><p>todo</p></td>
+      <td><p>color of cell borders on heatmap, use NA if no border should be 
+drawn.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Other parameters passed to <code><a href='https://rdrr.io/pkg/pheatmap/man/pheatmap.html'>pheatmap::pheatmap()</a></code>.</p></td>
+      <th>kmeans_k</th>
+      <td><p>the number of kmeans clusters to make, if we want to aggregate the 
+rows before drawing heatmap. If NA then the rows are not aggregated.</p></td>
+    </tr>
+    <tr>
+      <th>clustering_distance_rows</th>
+      <td><p>distance measure used in clustering rows. Possible 
+values are <code>"correlation"</code> for Pearson correlation and all the distances 
+supported by <code><a href='https://rdrr.io/r/stats/dist.html'>dist</a></code>, such as <code>"euclidean"</code>, etc. If the value is none 
+of the above it is assumed that a distance matrix is provided.</p></td>
+    </tr>
+    <tr>
+      <th>clustering_distance_cols</th>
+      <td><p>distance measure used in clustering columns. Possible 
+values the same as for clustering_distance_rows.</p></td>
+    </tr>
+    <tr>
+      <th>clustering_method</th>
+      <td><p>clustering method used. Accepts the same values as 
+<code><a href='https://rdrr.io/r/stats/hclust.html'>hclust</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>clustering_callback</th>
+      <td><p>callback function to modify the clustering. Is 
+called with two parameters: original <code>hclust</code> object and the matrix 
+used for clustering. Must return a <code>hclust</code> object.</p></td>
+    </tr>
+    <tr>
+      <th>cutree_rows</th>
+      <td><p>number of clusters the rows are divided into, based on the
+ hierarchical clustering (using cutree), if rows are not clustered, the 
+argument is ignored</p></td>
+    </tr>
+    <tr>
+      <th>cutree_cols</th>
+      <td><p>similar to <code>cutree_rows</code>, but for columns</p></td>
+    </tr>
+    <tr>
+      <th>treeheight_row</th>
+      <td><p>the height of a tree for rows, if these are clustered. 
+Default value 50 points.</p></td>
+    </tr>
+    <tr>
+      <th>treeheight_col</th>
+      <td><p>the height of a tree for columns, if these are clustered. 
+Default value 50 points.</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>logical to determine if legend should be drawn or not.</p></td>
+    </tr>
+    <tr>
+      <th>legend_breaks</th>
+      <td><p>vector of breakpoints for the legend.</p></td>
+    </tr>
+    <tr>
+      <th>legend_labels</th>
+      <td><p>vector of labels for the <code>legend_breaks</code>.</p></td>
+    </tr>
+    <tr>
+      <th>annotation_colors</th>
+      <td><p>list for specifying annotation_row and 
+annotation_col track colors manually. It is  possible to define the colors 
+for only some of the features. Check examples for  details.</p></td>
+    </tr>
+    <tr>
+      <th>annotation_legend</th>
+      <td><p>boolean value showing if the legend for annotation 
+tracks should be drawn.</p></td>
+    </tr>
+    <tr>
+      <th>annotation_names_row</th>
+      <td><p>boolean value showing if the names for row annotation 
+tracks should be drawn.</p></td>
+    </tr>
+    <tr>
+      <th>annotation_names_col</th>
+      <td><p>boolean value showing if the names for column annotation 
+tracks should be drawn.</p></td>
+    </tr>
+    <tr>
+      <th>drop_levels</th>
+      <td><p>logical to determine if unused levels are also shown in 
+the legend</p></td>
+    </tr>
+    <tr>
+      <th>show_rownames</th>
+      <td><p>boolean specifying if column names are be shown.</p></td>
+    </tr>
+    <tr>
+      <th>show_colnames</th>
+      <td><p>boolean specifying if column names are be shown.</p></td>
+    </tr>
+    <tr>
+      <th>main</th>
+      <td><p>the title of the plot</p></td>
+    </tr>
+    <tr>
+      <th>fontsize_row</th>
+      <td><p>fontsize for rownames (Default: fontsize)</p></td>
+    </tr>
+    <tr>
+      <th>fontsize_col</th>
+      <td><p>fontsize for colnames (Default: fontsize)</p></td>
+    </tr>
+    <tr>
+      <th>angle_col</th>
+      <td><p>angle of the column labels, right now one can choose only from few 
+predefined options (0, 45, 90, 270 and 315)</p></td>
+    </tr>
+    <tr>
+      <th>display_numbers</th>
+      <td><p>logical determining if the numeric values are also printed to 
+the cells. If this is a matrix (with same dimensions as original matrix), the contents
+of the matrix are shown instead of original values.</p></td>
+    </tr>
+    <tr>
+      <th>number_format</th>
+      <td><p>format strings (C printf style) of the numbers shown in cells. 
+For example "<code>%.2f</code>" shows 2 decimal places and "<code>%.1e</code>" shows exponential 
+notation (see more in <code><a href='https://rdrr.io/r/base/sprintf.html'>sprintf</a></code>).</p></td>
+    </tr>
+    <tr>
+      <th>number_color</th>
+      <td><p>color of the text</p></td>
+    </tr>
+    <tr>
+      <th>fontsize_number</th>
+      <td><p>fontsize of the numbers displayed in cells</p></td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td><p>manual option for determining the output file width in inches.</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>manual option for determining the output file height in inches.</p></td>
+    </tr>
+    <tr>
+      <th>silent</th>
+      <td><p>do not draw the plot (useful when using the gtable output)</p></td>
     </tr>
     </table>
 

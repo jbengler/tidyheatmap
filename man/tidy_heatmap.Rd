@@ -4,14 +4,28 @@
 \alias{tidy_heatmap}
 \title{Plot pretty heatmaps from tidy data}
 \usage{
-tidy_heatmap(df, rows, columns, values, filename = NA, ann_row = NULL,
-  ann_col = NULL, gaps_row = NULL, gaps_col = NULL,
-  ann_colors = NA, breaks = NA, scale = "none", fontsize = 7,
-  cellwidth = NA, cellheight = NA, color_scale_min = NA,
-  color_scale_max = NA, color_scale_n = 100,
-  color = (grDevices::colorRampPalette(rev(RColorBrewer::brewer.pal(n =
-  7, name = "RdYlBu"))))(color_scale_n), return_data = FALSE,
-  cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA, ...)
+tidy_heatmap(df, rows, columns, values, colors = NA,
+  color_scale_n = 15, color_scale_min = NA, color_scale_max = NA,
+  color_na = "#DDDDDD", annotation_row = NULL, annotation_col = NULL,
+  gaps_row = NULL, gaps_col = NULL, filename = NA, scale = "none",
+  fontsize = 7, cellwidth = NA, cellheight = NA,
+  cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA,
+  kmeans_k = NA, clustering_distance_rows = "euclidean",
+  clustering_distance_cols = "euclidean",
+  clustering_method = "complete", clustering_callback = identity2,
+  cutree_rows = NA, cutree_cols = NA,
+  treeheight_row = ifelse((class(cluster_rows) == "hclust") ||
+  cluster_rows, 50, 0), treeheight_col = ifelse((class(cluster_cols) ==
+  "hclust") || cluster_cols, 50, 0), legend = TRUE, legend_breaks = NA,
+  legend_labels = NA, annotation_colors = NA,
+  annotation_legend = TRUE, annotation_names_row = TRUE,
+  annotation_names_col = TRUE, drop_levels = TRUE,
+  show_rownames = TRUE, show_colnames = TRUE, main = NA,
+  fontsize_row = fontsize, fontsize_col = fontsize,
+  angle_col = c("270", "0", "45", "90", "315"),
+  display_numbers = FALSE, number_format = "\%.2f",
+  number_color = "grey30", fontsize_number = 0.8 * fontsize,
+  width = NA, height = NA, silent = FALSE)
 }
 \arguments{
 \item{df}{Input dataframe in long format.}
@@ -22,48 +36,130 @@ tidy_heatmap(df, rows, columns, values, filename = NA, ann_row = NULL,
 
 \item{values}{Column of the dataframe containing the values to plot.}
 
-\item{filename}{todo}
+\item{colors}{Vector of colors used to encode values in heatmap.}
 
-\item{ann_row}{todo}
-
-\item{ann_col}{todo}
-
-\item{gaps_row}{todo}
-
-\item{gaps_col}{todo}
-
-\item{ann_colors}{List of colors used to color code row and column annotations.
-See \code{pheatmap::pheatmap()} for details.}
-
-\item{breaks}{Sequence used for mapping values to colors. Is one element longer than \code{color_scale_n}.
-See \code{pheatmap::pheatmap()} for details.}
-
-\item{scale}{Character indicating if the values should be centered and scaled by "row", "column" or "none".
-Default is "row".}
-
-\item{fontsize}{Base fontsize for the plot.}
-
-\item{cellwidth}{todo}
-
-\item{cellheight}{todo}
+\item{color_scale_n}{Number of colors in color scale.}
 
 \item{color_scale_min}{todo}
 
 \item{color_scale_max}{todo}
 
-\item{color_scale_n}{Number of color on color scale.}
+\item{color_na}{todo}
 
-\item{color}{Vector of colors used in heatmap.}
+\item{annotation_row}{todo}
 
-\item{return_data}{If \code{TRUE} processed data is returned instead of plot.}
+\item{annotation_col}{todo}
 
-\item{cluster_rows}{todo}
+\item{gaps_row}{todo}
 
-\item{cluster_cols}{todo}
+\item{gaps_col}{todo}
 
-\item{border_color}{todo}
+\item{filename}{file path where to save the picture. Filetype is decided by 
+the extension in the path. Currently following formats are supported: png, pdf, tiff,
+ bmp, jpeg. Even if the plot does not fit into the plotting window, the file size is 
+calculated so that the plot would fit there, unless specified otherwise.}
 
-\item{...}{Other parameters passed to \code{pheatmap::pheatmap()}.}
+\item{scale}{character indicating if the values should be centered and scaled in 
+either the row direction or the column direction, or none. Corresponding values are 
+\code{"row"}, \code{"column"} and \code{"none"}}
+
+\item{fontsize}{base fontsize for the plot}
+
+\item{cellwidth}{individual cell width in points. If left as NA, then the values 
+depend on the size of plotting window.}
+
+\item{cellheight}{individual cell height in points. If left as NA, 
+then the values depend on the size of plotting window.}
+
+\item{cluster_rows}{boolean values determining if rows should be clustered or \code{hclust} object,}
+
+\item{cluster_cols}{boolean values determining if columns should be clustered or \code{hclust} object.}
+
+\item{border_color}{color of cell borders on heatmap, use NA if no border should be 
+drawn.}
+
+\item{kmeans_k}{the number of kmeans clusters to make, if we want to aggregate the 
+rows before drawing heatmap. If NA then the rows are not aggregated.}
+
+\item{clustering_distance_rows}{distance measure used in clustering rows. Possible 
+values are \code{"correlation"} for Pearson correlation and all the distances 
+supported by \code{\link{dist}}, such as \code{"euclidean"}, etc. If the value is none 
+of the above it is assumed that a distance matrix is provided.}
+
+\item{clustering_distance_cols}{distance measure used in clustering columns. Possible 
+values the same as for clustering_distance_rows.}
+
+\item{clustering_method}{clustering method used. Accepts the same values as 
+\code{\link{hclust}}.}
+
+\item{clustering_callback}{callback function to modify the clustering. Is 
+called with two parameters: original \code{hclust} object and the matrix 
+used for clustering. Must return a \code{hclust} object.}
+
+\item{cutree_rows}{number of clusters the rows are divided into, based on the
+ hierarchical clustering (using cutree), if rows are not clustered, the 
+argument is ignored}
+
+\item{cutree_cols}{similar to \code{cutree_rows}, but for columns}
+
+\item{treeheight_row}{the height of a tree for rows, if these are clustered. 
+Default value 50 points.}
+
+\item{treeheight_col}{the height of a tree for columns, if these are clustered. 
+Default value 50 points.}
+
+\item{legend}{logical to determine if legend should be drawn or not.}
+
+\item{legend_breaks}{vector of breakpoints for the legend.}
+
+\item{legend_labels}{vector of labels for the \code{legend_breaks}.}
+
+\item{annotation_colors}{list for specifying annotation_row and 
+annotation_col track colors manually. It is  possible to define the colors 
+for only some of the features. Check examples for  details.}
+
+\item{annotation_legend}{boolean value showing if the legend for annotation 
+tracks should be drawn.}
+
+\item{annotation_names_row}{boolean value showing if the names for row annotation 
+tracks should be drawn.}
+
+\item{annotation_names_col}{boolean value showing if the names for column annotation 
+tracks should be drawn.}
+
+\item{drop_levels}{logical to determine if unused levels are also shown in 
+the legend}
+
+\item{show_rownames}{boolean specifying if column names are be shown.}
+
+\item{show_colnames}{boolean specifying if column names are be shown.}
+
+\item{main}{the title of the plot}
+
+\item{fontsize_row}{fontsize for rownames (Default: fontsize)}
+
+\item{fontsize_col}{fontsize for colnames (Default: fontsize)}
+
+\item{angle_col}{angle of the column labels, right now one can choose only from few 
+predefined options (0, 45, 90, 270 and 315)}
+
+\item{display_numbers}{logical determining if the numeric values are also printed to 
+the cells. If this is a matrix (with same dimensions as original matrix), the contents
+of the matrix are shown instead of original values.}
+
+\item{number_format}{format strings (C printf style) of the numbers shown in cells. 
+For example "\code{\%.2f}" shows 2 decimal places and "\code{\%.1e}" shows exponential 
+notation (see more in \code{\link{sprintf}}).}
+
+\item{number_color}{color of the text}
+
+\item{fontsize_number}{fontsize of the numbers displayed in cells}
+
+\item{width}{manual option for determining the output file width in inches.}
+
+\item{height}{manual option for determining the output file height in inches.}
+
+\item{silent}{do not draw the plot (useful when using the gtable output)}
 }
 \description{
 This function is a wrapper around \code{pheatmap::pheatmap()} that allows long tidy
