@@ -29,7 +29,6 @@ You can install `tidyheatmap` from GitHub with:
 
 ```{r eval=FALSE}
 # install.packages("devtools")
-
 devtools::install_github("jbengler/tidyheatmap")
 ```
 
