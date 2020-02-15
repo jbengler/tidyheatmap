@@ -12,8 +12,8 @@ tidy_heatmap(df, rows, columns, values, colors = NA,
   cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA,
   kmeans_k = NA, clustering_distance_rows = "euclidean",
   clustering_distance_cols = "euclidean",
-  clustering_method = "complete", clustering_callback = identity2,
-  cutree_rows = NA, cutree_cols = NA,
+  clustering_method = "complete", clustering_callback = function(x,
+  ...) {     return(x) }, cutree_rows = NA, cutree_cols = NA,
   treeheight_row = ifelse((class(cluster_rows) == "hclust") ||
   cluster_rows, 50, 0), treeheight_col = ifelse((class(cluster_cols) ==
   "hclust") || cluster_cols, 50, 0), legend = TRUE, legend_breaks = NA,

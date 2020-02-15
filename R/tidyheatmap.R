@@ -105,7 +105,7 @@ tidy_heatmap <- function(df,
                          clustering_distance_rows = "euclidean",
                          clustering_distance_cols = "euclidean",
                          clustering_method = "complete",
-                         clustering_callback = identity2,
+                         clustering_callback = function(x, ...){return(x)},
                          cutree_rows = NA,
                          cutree_cols = NA,
                          treeheight_row = ifelse((class(cluster_rows) == "hclust") || cluster_rows, 50, 0),
@@ -134,8 +134,6 @@ tidy_heatmap <- function(df,
 
   heatmap_data <-
     wrangle_data(df, {{rows}}, {{columns}}, {{values}}, annotation_row = {{annotation_row}}, annotation_col = {{annotation_col}}, gaps_row = {{gaps_row}}, gaps_col = {{gaps_col}})
-
-  print(heatmap_data)
 
   breaks <- NA
   if(is.numeric(color_scale_min) & is.numeric(color_scale_max) & is.numeric(color_scale_n))
@@ -193,5 +191,4 @@ tidy_heatmap <- function(df,
                      width = width,
                      height = height,
                      silent = silent)
-
 }

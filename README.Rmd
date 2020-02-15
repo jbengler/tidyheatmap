@@ -40,13 +40,11 @@ Given a tidy data frame of gene expression data like `data_exprs`, you can easil
 ```{r fig.retina=2}
 library(tidyheatmap)
 
-data_exprs
-
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
              values = expression,
-             ann_col = c(sample_type, condition, group),
+             annotation_col = c(sample_type, condition, group),
              scale = "row",
              color_scale_n = 16,
              color_scale_min = -2,
