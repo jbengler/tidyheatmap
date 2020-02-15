@@ -88,19 +88,17 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Given a tidy data frame of gene expression data like <code>data_exprs</code>, you can easily generate a customized heatmap.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyheatmap)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/load_all.html">load_all</a></span>()</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Loading tidyheatmap</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Warning: package 'testthat' was built under R version 3.5.2</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="reference/tidy_heatmap.html">tidy_heatmap</a></span>(data_exprs,</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">             <span class="dt">rows =</span> external_gene_name,</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">             <span class="dt">columns =</span> sample,</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">             <span class="dt">values =</span> expression,</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">             <span class="dt">scale =</span> <span class="st">"row"</span>,</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">             <span class="dt">annotation_col =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(sample_type, condition, group),</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">             <span class="dt">annotation_row =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(is_immune_gene, direction),</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">             <span class="dt">gaps_row =</span> direction,</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">             <span class="dt">gaps_col =</span> group</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="reference/tidy_heatmap.html">tidy_heatmap</a></span>(data_exprs,</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">             <span class="dt">rows =</span> external_gene_name,</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">             <span class="dt">columns =</span> sample,</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">             <span class="dt">values =</span> expression,</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">             <span class="dt">scale =</span> <span class="st">"row"</span>,</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">             <span class="dt">annotation_col =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(sample_type, condition, group),</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">             <span class="dt">annotation_row =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(is_immune_gene, direction),</a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">             <span class="dt">gaps_row =</span> direction,</a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">             <span class="dt">gaps_col =</span> group</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">)</a></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 </div>
 <div id="documentation" class="section level2">

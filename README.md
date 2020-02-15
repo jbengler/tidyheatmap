@@ -36,9 +36,7 @@ can easily generate a customized heatmap.
 
 ``` r
 library(tidyheatmap)
-devtools::load_all()
-#> Loading tidyheatmap
-#> Warning: package 'testthat' was built under R version 3.5.2
+
 tidy_heatmap(data_exprs,
              rows = external_gene_name,
              columns = sample,
