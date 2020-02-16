@@ -57,25 +57,25 @@ wrangle_data <- function(df, rows, columns, values, annotation_row = NULL, annot
 #' A tidyverse-style interface to the powerful heatmap package
 #' [pheatmap](https://github.com/raivokolde/pheatmap)
 #' by [\@raivokolde](https://github.com/raivokolde).
-#' This enables the convenient generation of complex heatmaps from tidy data.
+#' It enables the convenient generation of complex heatmaps from tidy data.
 #'
 #' * `tidy_heatmap()` requires tidy data in long format, see [tidyverse](https://tidyr.tidyverse.org/index.html).
 #' * For more documentation also look into the [Get started](https://jbengler.github.io/tidyheatmap/articles/tidyheatmap.html) guide.
 #'
-#' @param df Input dataframe in long format.
+#' @param df A tidy dataframe in long format.
 #'
-#' @param rows,columns Column name in the dataframe to use for heatmap `rows` and `columns`.
-#' @param values Column name in the dataframe to use for color coded cell values.
+#' @param rows,columns Column in the dataframe to use for heatmap `rows` and `columns`.
+#' @param values Column in the dataframe containing the values to be color coded in the heatmap cells.
 #'
 #' @param colors Vector of colors used for the color legend.
 #' @param color_legend_n Number of colors in the color legend.
 #' @param color_legend_min,color_legend_max Min and max value of the color legend.
-#' Values smaller then the `color_legend_min` will have the lowest color, values bigger than the `color_legend_max` will get the highest color.
+#' Values smaller then the `color_legend_min` will have the lowest color, `values` bigger than the `color_legend_max` will get the highest color.
 #' @param color_na Color to use for `NAs` in `values`.
 #'
-#' @param annotation_row,annotation_col Column name(s) in the dataframe to use for `row` and `column` annotation.
-#' To use multiple column names for annotation combine then by `c(column1, column2)`.
-#' @param gaps_row,gaps_col Column name in the dataframe to use for use for `row` and `column` gaps.
+#' @param annotation_row,annotation_col Column(s) in the dataframe to use for `row` and `column` annotation.
+#' To use multiple columns for annotation combine then by `c(column1, column2)`.
+#' @param gaps_row,gaps_col Column in the dataframe to use for use for `row` and `column` gaps.
 #' @inheritParams pheatmap::pheatmap
 #'
 #' @return

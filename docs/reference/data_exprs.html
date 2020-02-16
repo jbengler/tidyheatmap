@@ -36,7 +36,8 @@
 
 
 <meta property="og:title" content="Expression data from RNA-Seq study. — data_exprs" />
-<meta property="og:description" content="Some more desciption." />
+<meta property="og:description" content="This data was taken form a RNA-Seq study investigating the regulation of genes
+in response to central nervous system inflammation." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,7 +115,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Some more desciption.</p>
+    <p>This data was taken form a RNA-Seq study investigating the regulation of genes
+in response to central nervous system inflammation.</p>
     </div>
 
     <pre class="usage"><span class='no'>data_exprs</span></pre>
@@ -122,24 +124,29 @@
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 800 rows and 12 variables:</p><dl class='dl-horizontal'>
-<dt>ensembl_gene_id</dt><dd><p>...</p></dd>
-<dt>external_gene_name</dt><dd><p>...</p></dd>
-<dt>Eip_vs_Hip.padj</dt><dd><p>...</p></dd>
-<dt>direction</dt><dd><p>...</p></dd>
-<dt>is_immune_gene</dt><dd><p>...</p></dd>
-<dt>count_type</dt><dd><p>...</p></dd>
-<dt>group</dt><dd><p>...</p></dd>
-<dt>replicate</dt><dd><p>...</p></dd>
-<dt>expression</dt><dd><p>...</p></dd>
-<dt>sample</dt><dd><p>...</p></dd>
-<dt>sample_type</dt><dd><p>...</p></dd>
-<dt>condition</dt><dd><p>...</p></dd>
+    <p>A data frame with 800 rows and 9 variables:</p><dl class='dl-horizontal'>
+<dt>ensembl_gene_id</dt><dd><p>Ensembl gene id</p></dd>
+<dt>external_gene_name</dt><dd><p>Gene symbol</p></dd>
+<dt>sample</dt><dd><p>Sample name</p></dd>
+<dt>expression</dt><dd><p>Normalized RNA-Seq expression value</p></dd>
+<dt>group</dt><dd><p>Experimental group</p></dd>
+<dt>sample_type</dt><dd><p>Sample type. Either <code>input</code> or <code>IP</code>.</p></dd>
+<dt>condition</dt><dd><p>Condition of sampling. Either <code>healthy</code> or <code>EAE</code>.</p></dd>
+<dt>is_immune_gene</dt><dd><p>Gene is annotated as immune cell gene. Either <code>yes</code> or <code>no</code>.</p></dd>
+<dt>direction</dt><dd><p>Direction of regulation. Either <code>up</code> or <code>down</code>.</p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104899'>https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104899</a></p>
+    <p><code>data_exprs</code> represents just a small subset of the data aquired in the study.</p>
+<p>More details about the study can be found here</p><ul>
+<li><p>Nature Neuroscience, <a href='https://www.nature.com/articles/s41593-019-0385-4'>Bassoon proteinopathy drives neurodegeneration in multiple sclerosis</a></p></li>
+</ul>
+
+<p>The complete raw data can be downloaded here</p><ul>
+<li><p>Gene Expression Omnibus, study accession <a href='https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104899'>GSE104899</a></p></li>
+</ul>
+
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

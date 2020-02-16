@@ -28,25 +28,25 @@ tidy_heatmap(df, rows, columns, values, colors = NA,
   width = NA, height = NA, silent = FALSE)
 }
 \arguments{
-\item{df}{Input dataframe in long format.}
+\item{df}{A tidy dataframe in long format.}
 
-\item{rows, columns}{Column name in the dataframe to use for heatmap \code{rows} and \code{columns}.}
+\item{rows, columns}{Column in the dataframe to use for heatmap \code{rows} and \code{columns}.}
 
-\item{values}{Column name in the dataframe to use for color coded cell values.}
+\item{values}{Column in the dataframe containing the values to be color coded in the heatmap cells.}
 
 \item{colors}{Vector of colors used for the color legend.}
 
 \item{color_legend_n}{Number of colors in the color legend.}
 
 \item{color_legend_min, color_legend_max}{Min and max value of the color legend.
-Values smaller then the \code{color_legend_min} will have the lowest color, values bigger than the \code{color_legend_max} will get the highest color.}
+Values smaller then the \code{color_legend_min} will have the lowest color, \code{values} bigger than the \code{color_legend_max} will get the highest color.}
 
 \item{color_na}{Color to use for \code{NAs} in \code{values}.}
 
-\item{annotation_row, annotation_col}{Column name(s) in the dataframe to use for \code{row} and \code{column} annotation.
-To use multiple column names for annotation combine then by \code{c(column1, column2)}.}
+\item{annotation_row, annotation_col}{Column(s) in the dataframe to use for \code{row} and \code{column} annotation.
+To use multiple columns for annotation combine then by \code{c(column1, column2)}.}
 
-\item{gaps_row, gaps_col}{Column name in the dataframe to use for use for \code{row} and \code{column} gaps.}
+\item{gaps_row, gaps_col}{Column in the dataframe to use for use for \code{row} and \code{column} gaps.}
 
 \item{filename}{file path where to save the picture. Filetype is decided by 
 the extension in the path. Currently following formats are supported: png, pdf, tiff,
@@ -168,7 +168,7 @@ Invisibly a \code{pheatmap} object that is a list with components
 A tidyverse-style interface to the powerful heatmap package
 \href{https://github.com/raivokolde/pheatmap}{pheatmap}
 by \href{https://github.com/raivokolde}{@raivokolde}.
-This enables the convenient generation of complex heatmaps from tidy data.
+It enables the convenient generation of complex heatmaps from tidy data.
 }
 \details{
 \itemize{

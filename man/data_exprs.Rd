@@ -4,28 +4,36 @@
 \name{data_exprs}
 \alias{data_exprs}
 \title{Expression data from RNA-Seq study.}
-\format{A data frame with 800 rows and 12 variables:
+\format{A data frame with 800 rows and 9 variables:
 \describe{
-\item{ensembl_gene_id}{...}
-\item{external_gene_name}{...}
-\item{Eip_vs_Hip.padj}{...}
-\item{direction}{...}
-\item{is_immune_gene}{...}
-\item{count_type}{...}
-\item{group}{...}
-\item{replicate}{...}
-\item{expression}{...}
-\item{sample}{...}
-\item{sample_type}{...}
-\item{condition}{...}
+\item{ensembl_gene_id}{Ensembl gene id}
+\item{external_gene_name}{Gene symbol}
+\item{sample}{Sample name}
+\item{expression}{Normalized RNA-Seq expression value}
+\item{group}{Experimental group}
+\item{sample_type}{Sample type. Either \code{input} or \code{IP}.}
+\item{condition}{Condition of sampling. Either \code{healthy} or \code{EAE}. }
+\item{is_immune_gene}{Gene is annotated as immune cell gene. Either \code{yes} or \code{no}.}
+\item{direction}{Direction of regulation. Either \code{up} or \code{down}. }
 }}
 \source{
-\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104899}
+\code{data_exprs} represents just a small subset of the data aquired in the study.
+
+More details about the study can be found here
+\itemize{
+\item Nature Neuroscience, \href{https://www.nature.com/articles/s41593-019-0385-4}{Bassoon proteinopathy drives neurodegeneration in multiple sclerosis}
+}
+
+The complete raw data can be downloaded here
+\itemize{
+\item Gene Expression Omnibus, study accession \href{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104899}{GSE104899}
+}
 }
 \usage{
 data_exprs
 }
 \description{
-Some more desciption.
+This data was taken form a RNA-Seq study investigating the regulation of genes
+in response to central nervous system inflammation.
 }
 \keyword{datasets}

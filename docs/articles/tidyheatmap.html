@@ -80,7 +80,7 @@
 
     
     
-<p><code>tidyheatmap</code> provides a tidyverse-style interface to the powerful heatmap package <a href="https://github.com/raivokolde/pheatmap">pheatmap</a> by <a href="https://github.com/raivokolde">@raivokolde</a>. Although heatmaps can be generated via <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">ggplot2::geom_tile()</a></code>, it is hard to reach the versatility and beauty of a genuine heatmap function like <code><a href="https://rdrr.io/pkg/pheatmap/man/pheatmap.html">pheatmap::pheatmap()</a></code>.</p>
+<p>Within the <code>tidyverse</code> heatmaps can be generated via <code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">ggplot2::geom_tile()</a></code> but is sometimes hard to reach the versatility and beauty of a genuine heatmap function like <code><a href="https://rdrr.io/pkg/pheatmap/man/pheatmap.html">pheatmap::pheatmap()</a></code>. <code>tidyheatmap</code> provides a tidyverse-style interface to the powerful heatmap package <a href="https://github.com/raivokolde/pheatmap">pheatmap</a> by <a href="https://github.com/raivokolde">@raivokolde</a> and enables the generation of complex heatmaps from tidy data with minimal code.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyheatmap)</a></code></pre></div>
 <div id="data-requirements" class="section level2">
@@ -90,19 +90,16 @@
 <p>As an example we will use the gene expression data set <code>data_exprs</code>. In the tidyverse lingo the columns of a data frame are called <em>variables</em>. The variable <code>expression</code> contains the numeric values to be color-coded in the heatmap. Furthermore we will use the variables <code>sample</code> for heatmap columns and <code>external_gene_name</code> for heatmap rows.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">glimpse</span>(data_exprs)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Observations: 800</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Variables: 12</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Variables: 9</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; $ ensembl_gene_id    &lt;chr&gt; "ENSMUSG00000033576", "ENSMUSG00000033576", "ENSMU…</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; $ external_gene_name &lt;chr&gt; "Apol6", "Apol6", "Apol6", "Apol6", "Apol6", "Apol…</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; $ Eip_vs_Hip.padj    &lt;dbl&gt; 3.793735e-28, 3.793735e-28, 3.793735e-28, 3.793735…</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; $ direction          &lt;chr&gt; "up", "up", "up", "up", "up", "up", "up", "up", "u…</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; $ is_immune_gene     &lt;chr&gt; "no", "no", "no", "no", "no", "no", "no", "no", "n…</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; $ count_type         &lt;chr&gt; "vsd", "vsd", "vsd", "vsd", "vsd", "vsd", "vsd", "…</span></a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; $ group              &lt;chr&gt; "Hin", "Hin", "Hin", "Hin", "Hin", "Ein", "Ein", "…</span></a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; $ replicate          &lt;chr&gt; "1", "2", "3", "4", "5", "1", "2", "3", "4", "5", …</span></a>
-<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; $ expression         &lt;dbl&gt; 2.203755, 2.203755, 2.660558, 2.649534, 3.442740, …</span></a>
-<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; $ sample             &lt;chr&gt; "Hin_1", "Hin_2", "Hin_3", "Hin_4", "Hin_5", "Ein_…</span></a>
-<a class="sourceLine" id="cb2-14" data-line-number="14"><span class="co">#&gt; $ sample_type        &lt;chr&gt; "input", "input", "input", "input", "input", "inpu…</span></a>
-<a class="sourceLine" id="cb2-15" data-line-number="15"><span class="co">#&gt; $ condition          &lt;chr&gt; "healthy", "healthy", "healthy", "healthy", "healt…</span></a></code></pre></div>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; $ sample             &lt;chr&gt; "Hin_1", "Hin_2", "Hin_3", "Hin_4", "Hin_5", "Ein_…</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; $ expression         &lt;dbl&gt; 2.203755, 2.203755, 2.660558, 2.649534, 3.442740, …</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; $ group              &lt;chr&gt; "Hin", "Hin", "Hin", "Hin", "Hin", "Ein", "Ein", "…</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; $ sample_type        &lt;chr&gt; "input", "input", "input", "input", "input", "inpu…</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; $ condition          &lt;chr&gt; "healthy", "healthy", "healthy", "healthy", "healt…</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; $ is_immune_gene     &lt;chr&gt; "no", "no", "no", "no", "no", "no", "no", "no", "n…</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; $ direction          &lt;chr&gt; "up", "up", "up", "up", "up", "up", "up", "up", "u…</span></a></code></pre></div>
 </div>
 <div id="basic-usage" class="section level2">
 <h2 class="hasAnchor">
