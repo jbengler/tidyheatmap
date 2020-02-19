@@ -191,6 +191,11 @@ tidy_heatmap <- function(df,
                          height = NA,
                          silent = FALSE) {
 
+  if(missing(df)) stop("argument 'df' is missing, with no default")
+  if(missing(rows)) stop("argument 'rows' is missing, with no default")
+  if(missing(columns)) stop("argument 'columns' is missing, with no default")
+  if(missing(values)) stop("argument 'values' is missing, with no default")
+
   heatmap_data <-
     wrangle_data(df, {{rows}}, {{columns}}, {{values}}, annotation_row = {{annotation_row}}, annotation_col = {{annotation_col}}, gaps_row = {{gaps_row}}, gaps_col = {{gaps_col}})
 
