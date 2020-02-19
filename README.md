@@ -7,10 +7,10 @@
 
 [![Travis build
 status](https://travis-ci.org/jbengler/tidyheatmap.svg?branch=master)](https://travis-ci.org/jbengler/tidyheatmap)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Codecov test
 coverage](https://codecov.io/gh/jbengler/tidyheatmap/branch/master/graph/badge.svg)](https://codecov.io/gh/jbengler/tidyheatmap?branch=master)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
 The goal of `tidyheatmap` is to provide a tidyverse-style interface to
