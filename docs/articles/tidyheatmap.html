@@ -89,8 +89,8 @@
 <p><code><a href="../reference/tidy_heatmap.html">tidy_heatmap()</a></code> requires tidy data in long format, see <a href="https://tidyr.tidyverse.org/index.html">tidyverse</a>.</p>
 <p>As an example we will use the gene expression data set <code>data_exprs</code>. In the tidyverse lingo the columns of a data frame are called <em>variables</em>. The variable <code>expression</code> contains the numeric values to be color-coded in the heatmap. Furthermore we will use the variables <code>sample</code> for heatmap columns and <code>external_gene_name</code> for heatmap rows.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">glimpse</span>(data_exprs)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Observations: 800</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Variables: 9</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; Rows: 800</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; Columns: 9</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; $ ensembl_gene_id    &lt;chr&gt; "ENSMUSG00000033576", "ENSMUSG00000033576", "ENSMU…</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; $ external_gene_name &lt;chr&gt; "Apol6", "Apol6", "Apol6", "Apol6", "Apol6", "Apol…</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; $ sample             &lt;chr&gt; "Hin_1", "Hin_2", "Hin_3", "Hin_4", "Hin_5", "Ein_…</span></a>
