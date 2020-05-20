@@ -201,7 +201,7 @@ tidy_heatmap <- function(df,
 
   breaks <- NA
   if(is.numeric(color_legend_min) & is.numeric(color_legend_max) & is.numeric(color_legend_n))
-    breaks <- seq(color_legend_min, color_legend_max, length.out = color_legend_n)
+    breaks <- seq(color_legend_min, color_legend_max, length.out = color_legend_n-1)
 
   if (any(is.na(colors)))
     colors <-  rev(RColorBrewer::brewer.pal(n = 7, name ="RdYlBu"))

@@ -38,7 +38,7 @@
 <meta property="og:title" content="Pretty heatmaps from tidy data — tidy_heatmap" />
 <meta property="og:description" content="A tidyverse-style interface to the powerful heatmap package
 pheatmap
-by \@raivokolde.
+by @raivokolde.
 It enables the convenient generation of complex heatmaps from tidy data." />
 <meta name="twitter:card" content="summary" />
 
@@ -119,63 +119,32 @@ It enables the convenient generation of complex heatmaps from tidy data." />
     <div class="ref-description">
     <p>A tidyverse-style interface to the powerful heatmap package
 <a href='https://github.com/raivokolde/pheatmap'>pheatmap</a>
-by <a href='https://github.com/raivokolde'>\@raivokolde</a>.
+by <a href='https://github.com/raivokolde'>@raivokolde</a>.
 It enables the convenient generation of complex heatmaps from tidy data.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tidy_heatmap</span>(
-  <span class='no'>df</span>,
-  <span class='no'>rows</span>,
-  <span class='no'>columns</span>,
-  <span class='no'>values</span>,
-  <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>color_legend_n</span> <span class='kw'>=</span> <span class='fl'>15</span>,
-  <span class='kw'>color_legend_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>color_legend_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>color_na</span> <span class='kw'>=</span> <span class='st'>"#DDDDDD"</span>,
-  <span class='kw'>annotation_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>annotation_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gaps_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>gaps_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>filename</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
-  <span class='kw'>fontsize</span> <span class='kw'>=</span> <span class='fl'>7</span>,
-  <span class='kw'>cellwidth</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>cellheight</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>cluster_rows</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>cluster_cols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>border_color</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>kmeans_k</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>clustering_distance_rows</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
+    <pre class="usage"><span class='fu'>tidy_heatmap</span>(<span class='no'>df</span>, <span class='no'>rows</span>, <span class='no'>columns</span>, <span class='no'>values</span>, <span class='kw'>colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>color_legend_n</span> <span class='kw'>=</span> <span class='fl'>15</span>, <span class='kw'>color_legend_min</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>color_legend_max</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>color_na</span> <span class='kw'>=</span> <span class='st'>"#DDDDDD"</span>, <span class='kw'>annotation_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>annotation_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>gaps_row</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>gaps_col</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filename</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>scale</span> <span class='kw'>=</span> <span class='st'>"none"</span>,
+  <span class='kw'>fontsize</span> <span class='kw'>=</span> <span class='fl'>7</span>, <span class='kw'>cellwidth</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cellheight</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>cluster_rows</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>cluster_cols</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>border_color</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>kmeans_k</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>clustering_distance_rows</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
   <span class='kw'>clustering_distance_cols</span> <span class='kw'>=</span> <span class='st'>"euclidean"</span>,
-  <span class='kw'>clustering_method</span> <span class='kw'>=</span> <span class='st'>"complete"</span>,
-  <span class='kw'>clustering_callback</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>, <span class='no'>...</span>) {     <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>x</span>) },
-  <span class='kw'>cutree_rows</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>cutree_cols</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>treeheight_row</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>cluster_rows</span>) <span class='kw'>==</span> <span class='st'>"hclust"</span>) <span class='kw'>||</span> <span class='no'>cluster_rows</span>, <span class='fl'>50</span>, <span class='fl'>0</span>),
-  <span class='kw'>treeheight_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>cluster_cols</span>) <span class='kw'>==</span> <span class='st'>"hclust"</span>) <span class='kw'>||</span> <span class='no'>cluster_cols</span>, <span class='fl'>50</span>, <span class='fl'>0</span>),
-  <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>legend_breaks</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>annotation_colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>annotation_legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>annotation_names_row</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>annotation_names_col</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop_levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>show_rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>show_colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>main</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>fontsize_row</span> <span class='kw'>=</span> <span class='no'>fontsize</span>,
-  <span class='kw'>fontsize_col</span> <span class='kw'>=</span> <span class='no'>fontsize</span>,
+  <span class='kw'>clustering_method</span> <span class='kw'>=</span> <span class='st'>"complete"</span>, <span class='kw'>clustering_callback</span> <span class='kw'>=</span> <span class='kw'>function</span>(<span class='no'>x</span>,
+  <span class='no'>...</span>) {     <span class='fu'><a href='https://rdrr.io/r/base/function.html'>return</a></span>(<span class='no'>x</span>) }, <span class='kw'>cutree_rows</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>cutree_cols</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>treeheight_row</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>cluster_rows</span>) <span class='kw'>==</span> <span class='st'>"hclust"</span>) <span class='kw'>||</span>
+  <span class='no'>cluster_rows</span>, <span class='fl'>50</span>, <span class='fl'>0</span>), <span class='kw'>treeheight_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span>((<span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span>(<span class='no'>cluster_cols</span>) <span class='kw'>==</span>
+  <span class='st'>"hclust"</span>) <span class='kw'>||</span> <span class='no'>cluster_cols</span>, <span class='fl'>50</span>, <span class='fl'>0</span>), <span class='kw'>legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>legend_breaks</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>legend_labels</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>annotation_colors</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>annotation_legend</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>annotation_names_row</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>annotation_names_col</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop_levels</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>show_rownames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>show_colnames</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
+  <span class='kw'>fontsize_row</span> <span class='kw'>=</span> <span class='no'>fontsize</span>, <span class='kw'>fontsize_col</span> <span class='kw'>=</span> <span class='no'>fontsize</span>,
   <span class='kw'>angle_col</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"270"</span>, <span class='st'>"0"</span>, <span class='st'>"45"</span>, <span class='st'>"90"</span>, <span class='st'>"315"</span>),
-  <span class='kw'>display_numbers</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>number_format</span> <span class='kw'>=</span> <span class='st'>"%.2f"</span>,
-  <span class='kw'>number_color</span> <span class='kw'>=</span> <span class='st'>"grey30"</span>,
-  <span class='kw'>fontsize_number</span> <span class='kw'>=</span> <span class='fl'>0.8</span> * <span class='no'>fontsize</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
-  <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+  <span class='kw'>display_numbers</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>number_format</span> <span class='kw'>=</span> <span class='st'>"%.2f"</span>,
+  <span class='kw'>number_color</span> <span class='kw'>=</span> <span class='st'>"grey30"</span>, <span class='kw'>fontsize_number</span> <span class='kw'>=</span> <span class='fl'>0.8</span> * <span class='no'>fontsize</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>height</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>silent</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

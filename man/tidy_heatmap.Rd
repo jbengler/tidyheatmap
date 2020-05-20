@@ -4,28 +4,59 @@
 \alias{tidy_heatmap}
 \title{Pretty heatmaps from tidy data}
 \usage{
-tidy_heatmap(df, rows, columns, values, colors = NA,
-  color_legend_n = 15, color_legend_min = NA, color_legend_max = NA,
-  color_na = "#DDDDDD", annotation_row = NULL, annotation_col = NULL,
-  gaps_row = NULL, gaps_col = NULL, filename = NA, scale = "none",
-  fontsize = 7, cellwidth = NA, cellheight = NA,
-  cluster_rows = FALSE, cluster_cols = FALSE, border_color = NA,
-  kmeans_k = NA, clustering_distance_rows = "euclidean",
+tidy_heatmap(
+  df,
+  rows,
+  columns,
+  values,
+  colors = NA,
+  color_legend_n = 15,
+  color_legend_min = NA,
+  color_legend_max = NA,
+  color_na = "#DDDDDD",
+  annotation_row = NULL,
+  annotation_col = NULL,
+  gaps_row = NULL,
+  gaps_col = NULL,
+  filename = NA,
+  scale = "none",
+  fontsize = 7,
+  cellwidth = NA,
+  cellheight = NA,
+  cluster_rows = FALSE,
+  cluster_cols = FALSE,
+  border_color = NA,
+  kmeans_k = NA,
+  clustering_distance_rows = "euclidean",
   clustering_distance_cols = "euclidean",
-  clustering_method = "complete", clustering_callback = function(x,
-  ...) {     return(x) }, cutree_rows = NA, cutree_cols = NA,
-  treeheight_row = ifelse((class(cluster_rows) == "hclust") ||
-  cluster_rows, 50, 0), treeheight_col = ifelse((class(cluster_cols) ==
-  "hclust") || cluster_cols, 50, 0), legend = TRUE, legend_breaks = NA,
-  legend_labels = NA, annotation_colors = NA,
-  annotation_legend = TRUE, annotation_names_row = TRUE,
-  annotation_names_col = TRUE, drop_levels = TRUE,
-  show_rownames = TRUE, show_colnames = TRUE, main = NA,
-  fontsize_row = fontsize, fontsize_col = fontsize,
+  clustering_method = "complete",
+  clustering_callback = function(x, ...) {     return(x) },
+  cutree_rows = NA,
+  cutree_cols = NA,
+  treeheight_row = ifelse((class(cluster_rows) == "hclust") || cluster_rows, 50, 0),
+  treeheight_col = ifelse((class(cluster_cols) == "hclust") || cluster_cols, 50, 0),
+  legend = TRUE,
+  legend_breaks = NA,
+  legend_labels = NA,
+  annotation_colors = NA,
+  annotation_legend = TRUE,
+  annotation_names_row = TRUE,
+  annotation_names_col = TRUE,
+  drop_levels = TRUE,
+  show_rownames = TRUE,
+  show_colnames = TRUE,
+  main = NA,
+  fontsize_row = fontsize,
+  fontsize_col = fontsize,
   angle_col = c("270", "0", "45", "90", "315"),
-  display_numbers = FALSE, number_format = "\%.2f",
-  number_color = "grey30", fontsize_number = 0.8 * fontsize,
-  width = NA, height = NA, silent = FALSE)
+  display_numbers = FALSE,
+  number_format = "\%.2f",
+  number_color = "grey30",
+  fontsize_number = 0.8 * fontsize,
+  width = NA,
+  height = NA,
+  silent = FALSE
+)
 }
 \arguments{
 \item{df}{A tidy dataframe in long format.}
@@ -167,7 +198,7 @@ Invisibly a \code{pheatmap} object that is a list with components
 \description{
 A tidyverse-style interface to the powerful heatmap package
 \href{https://github.com/raivokolde/pheatmap}{pheatmap}
-by \href{https://github.com/raivokolde}{@raivokolde}.
+by \href{https://github.com/raivokolde}{\@raivokolde}.
 It enables the convenient generation of complex heatmaps from tidy data.
 }
 \details{
