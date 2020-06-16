@@ -4,7 +4,8 @@
 \name{data_exprs}
 \alias{data_exprs}
 \title{Expression data from RNA-Seq study.}
-\format{A data frame with 800 rows and 9 variables:
+\format{
+A data frame with 800 rows and 9 variables:
 \describe{
 \item{ensembl_gene_id}{Ensembl gene id}
 \item{external_gene_name}{Gene symbol}
@@ -15,7 +16,8 @@
 \item{condition}{Condition of sampling. Either \code{healthy} or \code{EAE}. }
 \item{is_immune_gene}{Gene is annotated as immune cell gene. Either \code{yes} or \code{no}.}
 \item{direction}{Direction of regulation. Either \code{up} or \code{down}. }
-}}
+}
+}
 \source{
 \code{data_exprs} represents just a small subset of the data aquired in the study.
 
